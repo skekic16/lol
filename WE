@@ -58,10 +58,10 @@ $k=[Math]::Ceiling(100/2);$o=New-Object -ComObject WScript.Shell;for($i = 0;$i -
 
 $s=New-Object -ComObject SAPI.SpVoice
 $s.Rate = -2
-$s.Speak("Target, I found you")
-$s.Speak("I know where you are")
-$s.Speak("I know everything about you")
-$s.Speak("There is no escaping this")
+$s.Speak("Do youuuu fear death")
+$s.Speak("do you fear that darkkk abyss")
+$s.Speak("all your deeds laid bare")
+$s.Speak("All your sins PUNISHED")
 
 
 
