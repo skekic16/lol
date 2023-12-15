@@ -63,6 +63,14 @@ $s.Speak("do you fear that dark abyss")
 $s.Speak("all your deeds laid bare")
 $s.Speak("All your sins punished")
 $s.Speak("I can offer you, an escape")
+$s.Speak("I have all your files")
+$s.Speak("I have all your passwords")
+$s.Speak("I have your Social security number")
+$s.Speak("I can tear your life apart with a keystroke")
+$s.Speak("All I have to do is post your information on XSS a russian black hat hacker forum")
+$s.Speak("By the time theyre done, you wont recognize whats left of your life")
+$s.Speak("If you wish to forestall my judgement of your sins, wire ten million to this bank account")
+
   
 
 
