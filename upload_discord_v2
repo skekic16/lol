@@ -1,4 +1,9 @@
+
+
 function Upload-Discord {
+
+$myshell = New-Object -com "Wscript.Shell"
+$myshell.sendkeys("{ENTER}")
 
 [CmdletBinding()]
 param (
