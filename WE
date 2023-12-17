@@ -58,7 +58,7 @@ $k=[Math]::Ceiling(100/2);$o=New-Object -ComObject WScript.Shell;for($i = 0;$i -
 
 $s=New-Object -ComObject SAPI.SpVoice
 $s.Rate = -3
-$s.Speak("$FN, youve been hacked lololololol")
+$s.Speak("Hi dad, my computer is speaking to you")
 
 
   
