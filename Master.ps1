@@ -17,6 +17,7 @@ start-sleep 600
 rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
 
 rm "$env:USERPROFILE\bORG2.exe" -r -Force -ErrorAction SilentlyContinue
+rm "$env:USERPROFILE\bORG2.exe" -r -Force -ErrorAction SilentlyContinue
 
 rm "$env:USERPROFILE\d.exe" -r -Force -ErrorAction SilentlyContinue
 
