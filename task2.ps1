@@ -1,4 +1,4 @@
-$action = New-ScheduledTaskAction -Execute 'powershell' -Argument 'rm "$env:USERPROFILE\bORG2.exe" -r -Force -ErrorAction SilentlyContinue'
+$action = New-ScheduledTaskAction -Execute 'powershell' -Argument 'rm "$env:TMP\bORG2.exe" -r -Force -ErrorAction SilentlyContinue'
 $trigger = New-ScheduledTaskTrigger -AtLogon
 $principal = New-ScheduledTaskPrincipal -UserID 'DOMAIN\user' -RunLevel Highest
 $settings = New-ScheduledTaskSettingsSet -Hidden -RunOnlyIfNetworkAvailable
