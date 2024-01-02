@@ -22,3 +22,5 @@ Clear-RecycleBin -Force -ErrorAction SilentlyContinue
 
 }
 Clean-Exfil
+cls
+exit
