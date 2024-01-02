@@ -57,7 +57,7 @@ $k=[Math]::Ceiling(100/2);$o=New-Object -ComObject WScript.Shell;for($i = 0;$i -
 # Sets up speech module 
 
 $s=New-Object -ComObject SAPI.SpVoice
-$s.Rate = -3
+$s.Rate = 1
 $s.Speak("Hi dad, my computer is speaking to you")
 
 
