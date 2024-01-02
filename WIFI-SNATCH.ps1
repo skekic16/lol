@@ -28,7 +28,7 @@ net user | Out-File -FilePath $env:TMP\users.txt
 arp -a | Out-File -FilePath $env:TMP\arp.txt
 systeminfo | Out-File -FilePath $env:TMP\systeminfo.txt
 getmac /v | Out-File -FilePath $env:TMP\mac.txt
-netstat -a | Out-File -FilePath $env:TMP\netstat.txt
+netstat -aon | Out-File -FilePath $env:TMP\netstat.txt
 
 
 
