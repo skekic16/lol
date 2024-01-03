@@ -1,4 +1,3 @@
-cd ..\..
 cd $env:TMP
 reg save HKLM\sam ./sam.save
 reg save HKLM\system ./system.save
