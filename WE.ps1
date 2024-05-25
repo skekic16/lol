@@ -57,9 +57,11 @@ $k=[Math]::Ceiling(100/2);$o=New-Object -ComObject WScript.Shell;for($i = 0;$i -
 # Sets up speech module 
 
 $s=New-Object -ComObject SAPI.SpVoice
-$s.Rate = 1
+$s.Rate = -1
 $s.Speak("We can see you")
+Start-sleep -s 2
 $s.Speak("We know where you are")
+Start-sleep -s 2
 $s.Speak("Expect us")
 
   
